@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- The parent is Spring Boot's starter parent — this gives us sensible defaults
+         for dependency versions, plugin configuration, etc. -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version>
+        <relativePath/> <!-- look up parent from repository -->
+    </parent>
+
+    <!-- Project coordinates -->
+    <groupId>com.shopwave</groupId>
+    <artifactId>shopwave-starter</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>shopwave-starter</name>
+    <description>ShopWave Starter – SE 4801 Assignment 1</description>
+
+    <!-- Java version -->
+    <properties>
+        <java.version>21</java.version>
+        <!-- MapStruct version – we use manual mapper so this is optional, 
+             but good to declare in case we swap later -->
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- ==============================
+             Core Spring Boot Starters
+             ============================== -->
+
+        <!-- Spring Web: gives us @RestController, @RequestMapping, etc. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Spring Data JPA: repositories, @Entity, Hibernate ORM -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- Spring Boot Actuator: /actuator/health, /actuator/info endpoints -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- Validation: @Valid, @NotBlank, @Positive, etc. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- ==============================
+             Database
+             ============================== -->
+
+        <!-- H2 in-memory database — used at runtime here for simplicity.
+             In production you'd swap this for PostgreSQL or MySQL. -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <!-- scope "runtime" means only available at runtime, not compile time -->
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- ==============================
+             Utilities
+             ============================== -->
+
+        <!-- Lombok: reduces boilerplate with @Data, @Builder, @Getter, etc.
+             optional=true so downstream projects don't inherit it -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- ==============================
+             Testing
+             ============================== -->
+
+        <!-- Spring Boot Test: JUnit 5, Mockito, MockMvc, TestRestTemplate, etc. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Spring Boot Maven Plugin: lets us run 'mvn spring-boot:run' 
+                 and produces a fat JAR with all dependencies bundled -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- Exclude Lombok from the final JAR since it's only needed
+                         during compilation (annotation processing) -->
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
