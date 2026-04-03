@@ -2,6 +2,7 @@
 
 **Name:** HAILEMICHALE LIJALEM AYTENEW  
 **Student ID:** ATE/1051/14  
+**Section:** 1  
 **Course:** SE4801 - Enterprise Application Development  
 
 This is a Spring Boot 3.x REST API application for managing products, categories, and orders built as part of the Enterprise Application Development practical assignment.
