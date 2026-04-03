@@ -15,7 +15,23 @@ This is a Spring Boot 3.x REST API application for managing products, categories
 - An IDE (IntelliJ IDEA, VS Code, or Eclipse)
 - Git (if cloning from a repository)
 
-### Running the Application Structure
+### 🔨 How to Build
+
+To compile the application, download dependencies, and package it into an executable JAR file, run:
+
+*On Windows:*
+```powershell
+.\mvnw.cmd clean package
+```
+
+*On macOS/Linux:*
+```bash
+./mvnw clean package
+```
+
+This will generate a `.jar` file inside the `target/` directory.
+
+### 🏃‍♂️ How to Run (Running the Application Structure)
 
 The application uses an **H2 in-memory database**, so you don't need to manually configure any external database (MySQL/PostgreSQL) prior to running it. The database schema is automatically generated on startup based on the JPA entities.
 
