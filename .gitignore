@@ -1,0 +1,5 @@
+.idea/
+.vscode/
+target/
+*.log
+hs_err_pid*.log
